@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VinoraAI – AI-Powered Creative & Digital Growth Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #05050f;
+    --bg-card: #0d0d1f;
+    --bg-card2: #10102a;
+    --accent-blue: #4f8ef7;
+    --accent-violet: #7c3aed;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #a855f7;
+    --grad-main: linear-gradient(135deg, #4f8ef7 0%, #7c3aed 50%, #a855f7 100%);
+    --grad-cta: linear-gradient(90deg, #4f8ef7, #7c3aed);
+    --text-primary: #f0f0ff;
+    --text-secondary: #9090b8;
+    --text-muted: #5a5a80;
+    --border: rgba(255,255,255,0.07);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 68px;
+    background: rgba(5,5,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.45rem; font-weight: 450;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+  .nav-logo span { color: var(--accent-blue); }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active { color: var(--accent-blue); }
+
+  .nav-actions { display: flex; gap: .75rem; align-items: center; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .55rem 1.2rem;
+    border-radius: 50px;
+    font-family: var(--font-body); font-weight: 600; font-size: .88rem;
+    cursor: pointer; transition: all .25s; text-decoration: none; border: none;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: var(--text-primary);
+  }
+  .btn-outline:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+  .btn-primary {
+    background: var(--grad-cta);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(79,142,247,.35);
+  }
+  .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+  .btn-dark {
+    background: #fff;
+    color: #05050f;
+  }
+  .btn-dark:hover { background: #e0e0ff; }
+  .btn-ghost {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    color: var(--text-primary);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(79,142,247,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 90% 70%, rgba(124,58,237,0.15) 0%, transparent 60%),
+                var(--bg-dark);
+  }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    padding: .3rem .85rem;
+    border-radius: 50px;
+    background: rgba(79,142,247,0.12);
+    border: 1px solid rgba(79,142,247,0.3);
+    color: var(--accent-blue);
+    font-size: .8rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 450; line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 .grad { background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 1.05rem; max-width: 480px; margin-bottom: 2rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+  .hero-meta {
+    display: flex; gap: 2rem;
+    color: var(--text-secondary); font-size: .88rem; font-weight: 500;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: .4rem; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); }
+
+  .hero-visual {
+    position: relative; display: flex; justify-content: center; align-items: center;
+  }
+  .hero-glow {
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,142,247,0.18) 0%, rgba(124,58,237,0.15) 50%, transparent 70%);
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.08)} }
+
+  .bulb-svg { width: 340px; position: relative; z-index: 2; filter: drop-shadow(0 0 40px rgba(79,142,247,0.4)); }
+
+  .floating-card {
+    position: absolute; background: rgba(13,13,31,0.9);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: .7rem 1rem; backdrop-filter: blur(10px);
+    font-size: .82rem; display: flex; align-items: center; gap: .5rem;
+    animation: float 3s ease-in-out infinite;
+  }
+  .floating-card:nth-child(2) { top: 10%; left: -5%; animation-delay: .5s; }
+  .floating-card:nth-child(3) { bottom: 20%; right: -10%; animation-delay: 1s; }
+  .floating-card .fc-icon { font-size: 1.2rem; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+  /* ── TRUSTED ── */
+  .trusted {
+    padding: 2.5rem 5%;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.015);
+  }
+  .trusted-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 3rem;
+  }
+  .trusted-label { color: var(--text-muted); font-size: .82rem; font-weight: 500; white-space: nowrap; }
+  .logos { display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; }
+  .logo-item {
+    color: var(--text-muted); font-family: var(--font-display);
+    font-weight: 700; font-size: .95rem; letter-spacing: .05em;
+    display: flex; align-items: center; gap: .4rem; opacity: .7;
+    transition: opacity .2s;
+  }
+  .logo-item:hover { opacity: 1; }
+  .logo-icon { font-size: 1rem; }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 90px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    color: var(--accent-blue);
+    font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 450; letter-spacing: -.02em; line-height: 1.2;
+    margin-bottom: .8rem;
+  }
+  .section-title .grad { background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .section-sub {
+    color: var(--text-secondary); font-size: 1rem; max-width: 540px;
+  }
+
+  /* ── ABOUT / WHO WE ARE ── */
+  .about { background: #fff; }
+  .about .section-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .about .section-title, .about .section-tag { color: initial; }
+  .about .section-title { color: #0a0a1a; }
+  .about .section-title .grad { background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .about .section-tag { color: var(--accent-violet); }
+  .about-desc { color: #444; font-size: .95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1.8rem;
+  }
+  .about-feat {
+    display: flex; align-items: center; gap: .5rem;
+    color: #333; font-size: .88rem; font-weight: 500;
+  }
+  .check { width: 20px; height: 20px; border-radius: 50%; background: var(--grad-cta);
+    display: flex; align-items: center; justify-content: center; font-size: .65rem; color: #fff; flex-shrink: 0; }
+
+  .about-img {
+    border-radius: 16px; overflow: hidden;
+    background: var(--bg-card);
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .about-img-placeholder {
+    width: 100%; height: 100%; min-height: 280px;
+    background: linear-gradient(135deg, #0d0d2b 0%, #1a1040 50%, #0a1830 100%);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 16px; position: relative; overflow: hidden;
+  }
+  .office-scene { font-size: 5rem; position: relative; z-index: 2; }
+  .about-img-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(79,142,247,0.2) 0%, transparent 60%);
+  }
+
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: #f7f7ff;
+    border-radius: 12px; padding: 1.2rem 1rem;
+    border: 1px solid rgba(79,142,247,0.1);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 1.7rem; font-weight: 450;
+    color: #0a0a1a; margin-bottom: .2rem;
+  }
+  .stat-label { color: #666; font-size: .82rem; }
+  .stat-desc { color: #888; font-size: .78rem; margin-top: .15rem; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--bg-dark); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1rem; margin-top: 3rem;
+  }
+  .services-grid-2 {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1rem; margin-top: 1rem;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.4rem 1.1rem;
+    transition: all .25s; cursor: default;
+  }
+  .service-card:hover {
+    border-color: rgba(79,142,247,0.3);
+    background: var(--bg-card2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(79,142,247,0.1);
+  }
+  .service-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(79,142,247,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-bottom: 1rem;
+    border: 1px solid rgba(79,142,247,0.2);
+  }
+  .service-card h4 {
+    font-family: var(--font-display);
+    font-size: .92rem; font-weight: 700; margin-bottom: .4rem;
+  }
+  .service-card p { color: var(--text-secondary); font-size: .8rem; line-height: 1.5; }
+
+  /* ── WHY CHOOSE ── */
+  .why { background: var(--bg-card); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start;
+  }
+  .why-left {
+    background: linear-gradient(135deg, #0d0d2f, #1a0f3d);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 20px; padding: 2.5rem;
+  }
+  .why-left .section-title { color: var(--text-primary); }
+  .why-features { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .8rem; }
+  .why-feat {
+    display: flex; align-items: center; gap: .75rem;
+    color: var(--text-secondary); font-size: .9rem;
+  }
+  .why-feat-icon { font-size: 1rem; }
+
+  .why-right h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 1.2rem;
+    color: var(--text-secondary); letter-spacing: .06em; text-transform: uppercase; font-size: .78rem;
+  }
+  .process-steps { display: flex; flex-direction: column; gap: 1rem; }
+  .process-step {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--bg-card2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.2rem;
+    transition: border-color .2s;
+  }
+  .process-step:hover { border-color: rgba(79,142,247,0.3); }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: .8rem; font-weight: 700; color: var(--accent-blue);
+    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.2);
+    border-radius: 6px; padding: .2rem .5rem; flex-shrink: 0; margin-top: .1rem;
+  }
+  .step-body h4 {
+    font-family: var(--font-display); font-size: .95rem; font-weight: 700; margin-bottom: .25rem;
+  }
+  .step-body p { color: var(--text-secondary); font-size: .83rem; }
+
+  /* ── VALUE PILLS ── */
+  .values {
+    background: linear-gradient(135deg, #06060f 0%, #0d0828 50%, #06060f 100%);
+    padding: 2.5rem 5%;
+  }
+  .values-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
+  }
+  .value-pill {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: all .25s;
+  }
+  .value-pill:hover { background: rgba(79,142,247,0.06); border-color: rgba(79,142,247,0.2); }
+  .value-icon { font-size: 1.6rem; margin-bottom: .6rem; }
+  .value-pill h4 {
+    font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: .3rem;
+  }
+  .value-pill p { color: var(--text-secondary); font-size: .8rem; }
+
+  /* ── WORK ── */
+  .work { background: var(--bg-dark); }
+  .work-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 2.5rem;
+  }
+  .work-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem;
+  }
+  .work-card {
+    border-radius: 14px; overflow: hidden;
+    background: var(--bg-card); border: 1px solid var(--border);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .work-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.4); }
+  .work-img {
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #0d0d2b, #1a1040);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .work-img-placeholder { font-size: 3rem; opacity: .5; }
+  .work-badge {
+    position: absolute; bottom: .6rem; left: .6rem;
+    background: rgba(0,0,0,.7); backdrop-filter: blur(8px);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: .2rem .55rem; font-size: .72rem; color: var(--text-secondary);
+  }
+  .work-info { padding: .9rem 1rem; }
+  .work-info h4 { font-family: var(--font-display); font-size: .9rem; font-weight: 700; margin-bottom: .25rem; }
+  .work-info p { color: var(--text-secondary); font-size: .78rem; }
+
+  /* ── TEAM ── */
+  .team { background: var(--bg-card); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+  .team-card {
+    background: var(--bg-card2); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden; text-align: center;
+    transition: transform .25s, border-color .25s;
+  }
+  .team-card:hover { transform: translateY(-4px); border-color: rgba(79,142,247,0.3); }
+  .team-photo {
+    aspect-ratio: 1; background: linear-gradient(135deg, #0d0d30, #1a103d);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem; border-bottom: 1px solid var(--border);
+  }
+  .team-info { padding: 1rem; }
+  .team-info h4 { font-family: var(--font-display); font-size: .92rem; font-weight: 700; margin-bottom: .25rem; }
+  .team-info p { color: var(--text-secondary); font-size: .78rem; }
+  .team-role { display: inline-block; margin-top: .4rem; padding: .18rem .55rem; border-radius: 50px;
+    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.2);
+    color: var(--accent-blue); font-size: .72rem; font-weight: 600; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--grad-cta);
+    padding: 4rem 5%;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 450; color: #fff; margin-bottom: .7rem;
+  }
+  .cta-banner p { color: rgba(255,255,255,.8); font-size: 1rem; margin-bottom: 1.8rem; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 5%;
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: var(--font-display); font-size: 1.2rem; font-weight: 450;
+  }
+  .footer-logo span { color: var(--accent-blue); }
+  .footer-tagline { color: var(--text-muted); font-size: .8rem; margin-top: .2rem; }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a {
+    color: var(--text-secondary); font-size: .85rem;
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--text-primary); }
+  .footer-contact {
+    display: flex; flex-direction: column; gap: .3rem; text-align: right;
+  }
+  .footer-contact a {
+    color: var(--text-secondary); font-size: .82rem; text-decoration: none;
+    display: flex; align-items: center; gap: .4rem; justify-content: flex-end;
+    transition: color .2s;
+  }
+  .footer-contact a:hover { color: var(--accent-blue); }
+
+  .footer-bottom {
+    max-width: 1100px; margin: 1.5rem auto 0;
+    padding-top: 1.2rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text-muted); font-size: .78rem;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeInUp .7s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: .1s; }
+  .hero-left > *:nth-child(2) { animation-delay: .2s; }
+  .hero-left > *:nth-child(3) { animation-delay: .3s; }
+  .hero-left > *:nth-child(4) { animation-delay: .4s; }
+  .hero-left > *:nth-child(5) { animation-delay: .5s; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .about .section-inner { grid-template-columns: 1fr; }
+    .services-grid, .services-grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: 1fr; }
+    .values-inner { grid-template-columns: repeat(2,1fr); }
+    .work-grid { grid-template-columns: repeat(2,1fr); }
+    .team-grid { grid-template-columns: repeat(2,1fr); }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .services-grid-2 { grid-template-columns: 1fr; }
+    .values-inner { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Vinora<span>AI</span></div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#why">Why Us?</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="tel:+919480253601" class="btn btn-outline">📞 +91 9480253601</a>
+    <a href="#contact" class="btn btn-primary">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">✦ AI-Powered Agency</div>
+      <h1>AI-Powered <span class="grad">Creative</span> &<br>Digital <span class="grad">Growth</span> Solutions</h1>
+      <p>We build powerful digital experiences that combine technology, creativity, and marketing to grow your business faster.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary"> Get Started</a>
+        <a href="#contact" class="btn btn-ghost">💬 Talk to Us</a>
+      </div>
+      <div class="hero-meta">
+        <span><span class="dot"></span> WE BUILD</span>
+        <span><span class="dot"></span> WE CREATE</span>
+        <span><span class="dot"></span> WE GROW</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <svg class="bulb-svg" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bulbGrad" cx="50%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#7c3aed" stop-opacity=".9"/>
+            <stop offset="40%" stop-color="#4f8ef7" stop-opacity=".7"/>
+            <stop offset="100%" stop-color="#06b6d4" stop-opacity=".2"/>
+          </radialGradient>
+          <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#4f8ef7" stop-opacity=".3"/>
+            <stop offset="100%" stop-color="#4f8ef7" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Glow -->
+        <ellipse cx="150" cy="160" rx="120" ry="120" fill="url(#glowGrad)"/>
+        <!-- Bulb body -->
+        <path d="M150 40 C100 40 62 80 62 128 C62 162 80 190 108 208 L108 240 L192 240 L192 208 C220 190 238 162 238 128 C238 80 200 40 150 40 Z" fill="url(#bulbGrad)" stroke="rgba(79,142,247,0.5)" stroke-width="1.5" filter="url(#glow)"/>
+        <!-- Brain icon outline inside bulb -->
+        <text x="150" y="160" text-anchor="middle" dominant-baseline="middle" font-size="52" fill="rgba(255,255,255,0.9)" filter="url(#glow)">🧠</text>
+        <!-- AI text -->
+        <text x="150" y="125" text-anchor="middle" font-family="Syne,sans-serif" font-size="22" font-weight="450" fill="rgba(255,255,255,0.95)" filter="url(#glow)">AI</text>
+        <!-- Base -->
+        <rect x="118" y="240" width="64" height="12" rx="4" fill="rgba(79,142,247,0.4)" stroke="rgba(79,142,247,0.3)" stroke-width="1"/>
+        <rect x="124" y="252" width="52" height="10" rx="4" fill="rgba(79,142,247,0.3)" stroke="rgba(79,142,247,0.2)" stroke-width="1"/>
+        <rect x="130" y="262" width="40" height="10" rx="4" fill="rgba(79,142,247,0.2)" stroke="rgba(79,142,247,0.15)" stroke-width="1"/>
+        <!-- Energy lines -->
+        <line x1="60" y1="100" x2="30" y2="80" stroke="rgba(79,142,247,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="240" y1="100" x2="270" y2="80" stroke="rgba(124,58,237,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="150" y1="38" x2="150" y2="10" stroke="rgba(168,85,247,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- Dots -->
+        <circle cx="30" cy="80" r="4" fill="rgba(79,142,247,0.8)"/>
+        <circle cx="270" cy="80" r="4" fill="rgba(124,58,237,0.8)"/>
+        <circle cx="150" cy="10" r="4" fill="rgba(168,85,247,0.8)"/>
+      </svg>
+      <div class="floating-card">
+        <span class="fc-icon">💡</span>
+        <div><div style="font-weight:600;font-size:.8rem">AI Strategy</div><div style="color:var(--text-muted);font-size:.72rem">Innovation-driven</div></div>
+      </div>
+      <div class="floating-card">
+        <span class="fc-icon">📈</span>
+        <div><div style="font-weight:600;font-size:.8rem">250+ Projects</div><div style="color:var(--text-muted);font-size:.72rem">Delivered globally</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<div class="trusted">
+  <div class="trusted-inner">
+    <span class="trusted-label">Trusted by forward-thinking brands</span>
+    <div class="logos">
+      <div class="logo-item"><span class="logo-icon"></span> ElevateCorp</div>
+      <div class="logo-item"><span class="logo-icon">⬛</span> PIXEL&CO</div>
+      <div class="logo-item"><span class="logo-icon">⚙️</span> NextGen</div>
+      <div class="logo-item"><span class="logo-icon">🎯</span> CREATIVEHUB</div>
+      <div class="logo-item"><span class="logo-icon">🌀</span> VisionFlow</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / WHO WE ARE -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div>
+      <div class="about-img">
+        <div class="about-img-placeholder">
+          <span class="office-scene">🖥️</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">WHO WE ARE</div>
+      <h2 class="section-title" style="color:#0a0a1a">Turning Ideas Into<br><span class="grad">Digital Reality</span> </h2>
+      <p class="about-desc">VinoraAI is a next-generation creative technology and digital solutions company. We help businesses transform ideas into scalable digital products and high-performing brands.</p>
+      <p class="about-desc">From AI-powered automation to premium multimedia production, we combine <strong>innovation</strong> with <strong>execution</strong> to deliver real results.</p>
+      <div class="about-features">
+        <div class="about-feat"><div class="check">✓</div> Innovation-driven solutions</div>
+        <div class="about-feat"><div class="check">✓</div> End-to-end execution</div>
+        <div class="about-feat"><div class="check">✓</div> Result-focused strategy</div>
+        <div class="about-feat"><div class="check">✓</div> Data + Creativity combined</div>
+        <div class="about-feat"><div class="check">✓</div> Premium creative quality</div>
+        <div class="about-feat"><div class="check">✓</div> Dedicated support team</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Years of Experience</div>
+          <div class="stat-desc">Delivering exceptional digital solutions worldwide.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">250+</div>
+          <div class="stat-label">Projects Completed</div>
+          <div class="stat-desc">Successfully delivered across industries and platforms.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">150+</div>
+          <div class="stat-label">Happy Clients</div>
+          <div class="stat-desc">Businesses growing with our solutions and support.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Awards & Recognition</div>
+          <div class="stat-desc">For excellence in creativity, innovation, and results.</div>
+        </div>
+      </div>
+      <br>
+      <a href="#about" class="btn btn-primary" style="background:#0a0a1a;color:#fff;border-radius:8px;padding:.7rem 1.4rem">Learn More About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:.5rem">
+      <div class="section-tag">WHAT WE DO</div>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub" style="margin:0 auto">End-to-end digital solutions to build your brand, grow your audience, and scale your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h4>Website Development</h4>
+        <p>High-performance, responsive websites designed to convert visitors into customers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h4>App Development</h4>
+        <p>Powerful mobile apps for Android & iOS that deliver seamless user experiences.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
+        <h4>SaaS Software</h4>
+        <p>Scalable cloud-based platforms to automate processes and grow your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h4>SEO Optimization</h4>
+        <p>Rank higher on search engines and attract the right audience organically.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📢</div>
+        <h4>Digital Marketing</h4>
+        <p>Data-driven marketing strategies that boost visibility and drive real results.</p>
+      </div>
+    </div>
+    <div class="services-grid-2">
+      <div class="service-card">
+        <div class="service-icon">📸</div>
+        <h4>Corporate Shoots</h4>
+        <p>Professional visuals that represent your brand and build credibility.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👗</div>
+        <h4>Model / Fashion Shoots</h4>
+        <p>Stylish, high-end fashion & portfolio photography.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎬</div>
+        <h4>Event Coverage</h4>
+        <p>Cinematic coverage of your special moments and brand events.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎥</div>
+        <h4>Ad Films & Reels</h4>
+        <p>Engaging videos that grab attention & drive action.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <h4>VFX & Animation</h4>
+        <p>Stunning visuals that bring ideas to life with motion magic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PILLS -->
+<div class="values">
+  <div class="values-inner">
+    <div class="value-pill">
+      <div class="value-icon">⚡</div>
+      <h4>Innovation</h4>
+      <p>Driven by the latest AI & tech</p>
+    </div>
+    <div class="value-pill">
+      <div class="value-icon">🎨</div>
+      <h4>Creativity</h4>
+      <p>Designs that engage & convert</p>
+    </div>
+    <div class="value-pill">
+      <div class="value-icon">📈</div>
+      <h4>Growth</h4>
+      <p>Strategies focused on results</p>
+    </div>
+    <div class="value-pill">
+      <div class="value-icon">🤝</div>
+      <h4>Results</h4>
+      <p>Measurable success, every time</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US + PROCESS -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="section-tag" style="color:var(--accent-purple)">WHY CHOOSE US</div>
+        <h2 class="section-title">Why <span class="grad">VinoraAi</span>?</h2>
+        <p style="color:var(--text-secondary);font-size:.9rem;margin-top:.8rem">We don't just build — we strategize, create, and scale with you at every step.</p>
+        <div class="why-features">
+          <div class="why-feat"><span class="why-feat-icon">🔷</span> Innovation-driven solutions</div>
+          <div class="why-feat"><span class="why-feat-icon">🔷</span> Result-focused strategy</div>
+          <div class="why-feat"><span class="why-feat-icon">🔷</span> Premium creative quality</div>
+          <div class="why-feat"><span class="why-feat-icon">✦</span> End-to-end execution</div>
+          <div class="why-feat"><span class="why-feat-icon">✦</span> Data + Creativity combined</div>
+        </div>
+      </div>
+      <div>
+        <div id="process">
+          <div class="section-tag">OUR PROCESS</div>
+          <h2 class="section-title">How We Work</h2>
+        </div>
+        <div class="process-steps" style="margin-top:1.5rem">
+          <div class="process-step">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h4>Understand Your Vision</h4>
+              <p>We analyze your goals, audience, and requirements to build a strong foundation.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h4>Strategy & Planning</h4>
+              <p>We create a roadmap tailored to your business needs and growth targets.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h4>Build & Execute</h4>
+              <p>Our team designs, develops, and launches your solution with precision & creativity.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">04</span>
+            <div class="step-body">
+              <h4>Launch & Scale</h4>
+              <p>We deliver, optimize, and help you grow continuously after launch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="section-inner">
+    <div class="work-header">
+      <div>
+        <div class="section-tag">FEATURED WORK</div>
+        <h2 class="section-title">Our Recent Work</h2>
+      </div>
+      <a href="#" class="btn btn-ghost" style="border-radius:50px">View All Projects →</a>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-img">
+          <span class="work-img-placeholder">🖥️</span>
+          <span class="work-badge">Web Development</span>
+        </div>
+        <div class="work-info">
+          <h4>TechCorp Website</h4>
+          <p>Web Development</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img" style="background:linear-gradient(135deg,#0d1a30,#0a102a)">
+          <span class="work-img-placeholder">📱</span>
+          <span class="work-badge">Mobile App</span>
+        </div>
+        <div class="work-info">
+          <h4>FlowMind App</h4>
+          <p>Mobile App</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img" style="background:linear-gradient(135deg,#0a1a20,#0d2030)">
+          <span class="work-img-placeholder">☁️</span>
+          <span class="work-badge">SaaS Platform</span>
+        </div>
+        <div class="work-info">
+          <h4>BizFlow SaaS</h4>
+          <p>SaaS Platform</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img" style="background:linear-gradient(135deg,#1a100a,#2a1505)">
+          <span class="work-img-placeholder">🎬</span>
+          <span class="work-badge">Ad Film & Reels</span>
+        </div>
+        <div class="work-info">
+          <h4>Aura Skincare Ad</h4>
+          <p>Ad Film & Reels</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="section-inner">
+    <div style="text-align:center">
+      <div class="section-tag">OUR TEAM</div>
+      <h2 class="section-title">Passionate & <span class="grad">Creative</span> Team</h2>
+      <p class="section-sub" style="margin:0 auto">Talented individuals driving innovation and results for our clients worldwide.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">👨‍💼</div>
+        <div class="team-info">
+          <h4>Preethan R.S.</h4>
+          <p>Founder & CEO</p>
+          <span class="team-role">Visionary Strategist</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">👩‍🎨</div>
+        <div class="team-info">
+          <h4>Vinitha E.</h4>
+          <p>Creative Head</p>
+          <span class="team-role">Marketing Strategist</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">👨‍💻</div>
+        <div class="team-info">
+          <h4>Anily S.</h4>
+          <p>Lead Developer</p>
+          <span class="team-role">Tech Architect</span>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">👩‍💼</div>
+        <div class="team-info">
+          <h4>Vimala K.</h4>
+          <p>Operations Lead</p>
+          <span class="team-role">Head Photographer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="contact">
+  <h2>Let's Build Something <em style="font-style:normal">Amazing</em> Together</h2>
+  <p>Turn your ideas into reality with VinoraAI. We're just one message away.</p>
+  <div class="cta-btns">
+    <a href="tel:+919480253601" class="btn btn-dark">📞 +91 9480253601</a>
+    <a href="mailto:preethamrsp@gmail.com" class="btn btn-ghost" style="border-color:rgba(255,255,255,.4);color:#fff"> Start Your Project</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Vinora<span>AI</span></div>
+      <div class="footer-tagline">AI-Powered Creative & Digital Growth Solutions</div>
+    </div>
+    <nav class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#why">Why Us?</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="footer-contact">
+      <a href="tel:+919480253601">📞 +91 9480253601</a>
+      <a href="mailto:preethamrsp@gmail.com">✉️ preethamrsp@gmail.com</a>
+      <a href="http://www.vinoraai.com" target="_blank">🌐 www.vinoraai.com</a>
+      <a href="#">📷 @VinoraAI</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 VinoraAI. All rights reserved.</span>
+    <span>Let's Create the Future — Together ✦</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth active nav on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
