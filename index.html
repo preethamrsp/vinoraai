@@ -274,8 +274,8 @@ nav {
     animation: float 3s ease-in-out infinite;
     z-index: 3;
   }
-  .floating-card:nth-child(2) { top: 10%; left: -5%; animation-delay: .5s; }
-  .floating-card:nth-child(3) { bottom: 20%; right: -10%; animation-delay: 1s; }
+  .floating-card:nth-child(2) { top: 10%; left: 0%; animation-delay: .5s; }
+  .floating-card:nth-child(3) { bottom: 20%; right: 0%; animation-delay: 1s; }
   .floating-card .fc-icon { font-size: 1.2rem; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
@@ -603,24 +603,180 @@ nav {
   .hero-left > *:nth-child(4) { animation-delay: .4s; }
   .hero-left > *:nth-child(5) { animation-delay: .5s; }
 
-  /* Responsive */
+  /* ── HAMBURGER MENU ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    z-index: 1001;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    background: rgba(5, 5, 15, 0.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 5%;
+    flex-direction: column;
+    gap: 0.2rem;
+    max-height: calc(100vh - 68px);
+    overflow-y: auto;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.85rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav a:hover, .mobile-nav a.active { color: var(--accent-blue); }
+  .mobile-nav-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .mobile-nav-actions .btn { text-align: center; justify-content: center; }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
+    /* Navbar */
+    .nav-right { display: none; }
+    .nav-hamburger { display: flex; }
+
+    /* Hero */
+    .hero {
+      padding: 100px 5% 60px;
+    }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
+    .hero p { max-width: 100%; }
+
+    /* About */
     .about .section-inner { grid-template-columns: 1fr; }
+
+    /* Services */
     .services-grid, .services-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    /* Why / Process */
     .why-grid { grid-template-columns: 1fr; }
+
+    /* Values */
     .values-inner { grid-template-columns: repeat(2,1fr); }
+
+    /* Work */
     .work-grid { grid-template-columns: repeat(2,1fr); }
+
+    /* Team */
     .team-grid { grid-template-columns: repeat(2,1fr); }
-    .nav-links { display: none; }
+
+    /* Trusted */
+    .trusted-inner { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .logos { gap: 1.5rem; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .footer-contact { text-align: left; }
+    .footer-contact a { justify-content: flex-start; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .footer-links { gap: 1rem; }
   }
+
   @media (max-width: 600px) {
-    .services-grid, .services-grid-2 { grid-template-columns: 1fr; }
-    .values-inner { grid-template-columns: 1fr; }
-    .work-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
+    /* Global */
+    section { padding: 60px 5%; }
+
+    /* Navbar */
+    nav { padding: 0 4%; }
+
+    /* Hero */
+    .hero {
+      padding: 90px 4% 50px;
+      min-height: auto;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+    .hero p { font-size: 0.95rem; }
+    .hero-btns { flex-direction: column; gap: 0.75rem; }
+    .hero-btns .btn { text-align: center; justify-content: center; }
+    .hero-meta { flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; }
+
+    /* Floating cards — hide on small screens to prevent overflow */
+    .floating-card { display: none; }
+
+    /* Trusted */
+    .trusted { padding: 2rem 4%; }
+    .trusted-inner { gap: 0.8rem; }
+    .logos { gap: 1rem; }
+    .logo-item { font-size: 0.82rem; }
+
+    /* About */
+    .about-features { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Services */
+    .services-grid, .services-grid-2 { grid-template-columns: 1fr; }
+
+    /* Values */
+    .values { padding: 2rem 4%; }
+    .values-inner { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    .value-pill { padding: 1.1rem 0.8rem; }
+
+    /* Work */
+    .work-grid { grid-template-columns: 1fr; }
+    .work-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+    /* Team */
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Why / Why-left */
+    .why-left { padding: 1.5rem; }
+
+    /* CTA Banner */
+    .cta-banner { padding: 3rem 4%; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    .cta-btns .btn { width: 100%; max-width: 300px; text-align: center; justify-content: center; }
+
+    /* Footer */
+    .footer-links { flex-wrap: wrap; gap: 0.75rem; }
+    .footer-links a { font-size: 0.82rem; }
+  }
+
+  @media (max-width: 400px) {
+    .values-inner { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.75rem; }
   }
 </style>
 </head>
@@ -650,7 +806,29 @@ nav {
       <a href="#contact" class="btn btn-primary">Get a Quote</a>
     </div>
   </div>
+
+  <!-- Hamburger for mobile -->
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- Mobile navigation drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" class="active">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Work</a>
+  <a href="#why">Why Us?</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Contact</a>
+  <div class="mobile-nav-actions">
+    <a href="tel:+919480253601" class="btn btn-outline">📞 +91 9480253601</a>
+    <a href="#contact" class="btn btn-primary">Get a Quote</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1078,6 +1256,25 @@ nav {
     navLinks.forEach(a => {
       a.classList.remove('active');
       if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close mobile nav when a link is clicked
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
     });
   });
 </script>
