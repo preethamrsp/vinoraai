@@ -5,18 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VinoraAI – AI-Powered Creative & Digital Growth Solutions</title>
+  <link rel="icon" type="image/png" href="./assets/favicon.png" >
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
     rel="stylesheet">
 </head>
 <link rel="stylesheet" href="./style/style.css">
-<script src="./scripts/script.js"></script>
+
 
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
-    <div class="nav-logo">Vinora<span>AI</span></div>
+    <div class="nav-logo"><img src="./assets/dark logo.png" alt="VinoraAI Logo"></div>
 
     <div class="nav-right">
       <ul class="nav-links">
@@ -26,7 +27,6 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#why">Why Us?</a></li>
         <li><a href="#process">Process</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
@@ -51,7 +51,6 @@
     <a href="#work">Work</a>
     <a href="#why">Why Us?</a>
     <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
     <div class="mobile-nav-actions">
       <a href="tel:+919480253601" class="btn btn-outline">📞 +91 9480253601</a>
       <a href="#contact" class="btn btn-primary">Get a Quote</a>
@@ -138,7 +137,7 @@
     </div>
   </section>
 
-  <!-- TRUSTED BY -->
+  <!-- TRUSTED BY
   <div class="trusted">
     <div class="trusted-inner">
       <span class="trusted-label">Trusted by forward-thinking brands</span>
@@ -150,7 +149,7 @@
         <div class="logo-item"><span class="logo-icon">🌀</span> VisionFlow</div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- ABOUT / WHO WE ARE -->
   <section class="about" id="about">
@@ -158,19 +157,19 @@
       <div>
         <div class="about-img">
           <div class="about-img">
-            <img src="assets/logo.jpg" alt="About VinoraAI"
+            <img src="assets/whoarewe.png" alt="About VinoraAI"
               style="width:98%; height:99%; object-fit:cover; border-radius:16px;">
           </div>
         </div>
       </div>
       <div>
         <div class="section-tag">WHO WE ARE</div>
-        <h2 class="section-title" style="color:#0a0a1a">Turning Ideas Into<br><span class="grad">Digital Reality</span>
+        <h2 class="section-title" style="color:#d1d1dd">Turning Ideas Into<br><span class="grad">Digital Reality</span>
         </h2>
-        <p class="about-desc">VinoraAI is a next-generation creative technology and digital solutions company. We help
+        <!-- <p class="about-desc">VinoraAI is a next-generation creative technology and digital solutions company. We help
           businesses transform ideas into scalable digital products and high-performing brands.</p>
         <p class="about-desc">From AI-powered automation to premium multimedia production, we combine
-          <strong>innovation</strong> with <strong>execution</strong> to deliver real results.</p>
+          <strong>innovation</strong> with <strong>execution</strong> to deliver real results.</p> -->
         <div class="about-features">
           <div class="about-feat">
             <div class="check">✓</div> Innovation-driven solutions
@@ -472,14 +471,26 @@
 
   <!-- CTA BANNER -->
   <div class="cta-banner" id="contact">
-    <h2>Let's Build Something <em style="font-style:normal">Amazing</em> Together</h2>
-    <p>Turn your ideas into reality with VinoraAI. We're just one message away.</p>
-    <div class="cta-btns">
-      <a href="tel:+919480253601" class="btn btn-dark">📞 +91 9480253601</a>
-      <a href="mailto:preethamrsp@gmail.com" class="btn btn-ghost" style="border-color:rgba(255,255,255,.4);color:#fff">
-        Start Your Project</a>
-    </div>
+  <h2>Let's Build Something <em style="font-style:normal">Amazing</em> Together</h2>
+  <p>Turn your ideas into reality with VinoraAI. We're just one message away.</p>
+
+  <!-- Buttons -->
+  <div class="cta-btns">
+    <a href="tel:+919480253601" class="btn btn-dark">📞 +91 9480253601</a>
   </div>
+
+  <!-- Form (moved outside) -->
+  <div class="contact-form">
+    <form id="whatsappForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Your Phone Number" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="query" placeholder="Your Requirement" required></textarea>
+
+      <button type="submit" class="btn btn-dark">Send via WhatsApp</button>
+    </form>
+  </div>
+</div>
 
   <!-- FOOTER -->
   <footer>
@@ -508,6 +519,10 @@
       <span>© 2025 VinoraAI. All rights reserved.</span>
       <span>Let's Create the Future — Together ✦</span>
     </div>
+
+    <script src="./scripts/script.js"></script>
+
+
   </footer>
 </body>
 
