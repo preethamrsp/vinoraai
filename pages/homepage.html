@@ -450,7 +450,28 @@
       </form>
     </div>
   </div>
+<script>
+    document.getElementById("whatsappForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let query = document.getElementById("query").value;
+
+    let message = `Hello VinoraAI,%0A%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Email: ${email}%0A
+Requirement: ${query}`;
+
+    let whatsappNumber = "919480253601";
+
+    let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(url, "_blank");
+});
+</script>
   <!-- FOOTER -->
   <div id="footer"></div>
 
