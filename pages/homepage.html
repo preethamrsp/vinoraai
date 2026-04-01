@@ -116,7 +116,7 @@
       <div>
         <div class="about-img">
           <div class="about-img">
-            <img src="../assets/whoarewe.png" alt="About VinoraAI"
+            <img src="./assets/whoarewe.png" alt="About VinoraAI"
               style="width:98%; height:99%; object-fit:cover; border-radius:16px;">
           </div>
         </div>
@@ -155,21 +155,21 @@
             <div class="stat-label">Years of Experience</div>
             <div class="stat-desc">Delivering exceptional digital solutions worldwide.</div>
           </div>
-          <div class="stat-card">
+          <!-- <div class="stat-card">
             <div class="stat-num">250+</div>
             <div class="stat-label">Projects Completed</div>
             <div class="stat-desc">Successfully delivered across industries and platforms.</div>
-          </div>
+          </div> -->
           <div class="stat-card">
             <div class="stat-num">150+</div>
             <div class="stat-label">Happy Clients</div>
             <div class="stat-desc">Businesses growing with our solutions and support.</div>
           </div>
-          <div class="stat-card">
+          <!-- <div class="stat-card">
             <div class="stat-num">50+</div>
             <div class="stat-label">Awards & Recognition</div>
             <div class="stat-desc">For excellence in creativity, innovation, and results.</div>
-          </div>
+          </div> -->
         </div>
         <br>
         <a href="#about" class="btn btn-primary"
@@ -283,8 +283,8 @@
             <div class="why-feat"><span class="why-feat-icon">🔷</span> Innovation-driven solutions</div>
             <div class="why-feat"><span class="why-feat-icon">🔷</span> Result-focused strategy</div>
             <div class="why-feat"><span class="why-feat-icon">🔷</span> Premium creative quality</div>
-            <div class="why-feat"><span class="why-feat-icon">✦</span> End-to-end execution</div>
-            <div class="why-feat"><span class="why-feat-icon">✦</span> Data + Creativity combined</div>
+            <div class="why-feat"><span class="why-feat-icon">🔷</span> End-to-end execution</div>
+            <div class="why-feat"><span class="why-feat-icon">🔷</span> Data + Creativity combined</div>
           </div>
         </div>
         <div>
@@ -327,7 +327,7 @@
     </div>
   </section>
 
-  <!-- WORK -->
+  <!-- WORK
   <section class="work" id="work">
     <div class="section-inner">
       <div class="work-header">
@@ -380,10 +380,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- TEAM -->
-  <section class="team">
+  <!-- <section class="team">
     <div class="section-inner">
       <div style="text-align:center">
         <div class="section-tag">OUR TEAM</div>
@@ -426,7 +426,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- CTA BANNER -->
   <div class="cta-banner" id="contact">
@@ -437,9 +437,13 @@
     <div class="cta-btns">
       <a href="tel:+919480253601" class="btn btn-dark">📞 +91 9480253601</a>
     </div>
+    <br>
+     <div class="cta-btns">
+      <a href="mailto:vinoraaiworkforce@gmail.com" class="btn btn-dark">✉️ vinoraaiworkforce@gmail.com</a>
+    </div>
 
     <!-- Form (moved outside) -->
-    <div class="contact-form">
+    <!-- <div class="contact-form">
       <form id="whatsappForm">
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="tel" id="phone" placeholder="Your Phone Number" required>
@@ -448,30 +452,30 @@
 
         <button type="submit" class="btn btn-dark">Send via WhatsApp</button>
       </form>
-    </div>
+    </div> -->
   </div>
-<script>
-    document.getElementById("whatsappForm").addEventListener("submit", function (e) {
-    e.preventDefault();
 
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let email = document.getElementById("email").value;
-    let query = document.getElementById("query").value;
+  <!-- <script>
+    document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    let message = `Hello VinoraAI,%0A%0A
-Name: ${name}%0A
-Phone: ${phone}%0A
-Email: ${email}%0A
-Requirement: ${query}`;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const query = document.getElementById('query').value;
 
-    let whatsappNumber = "919480253601";
+      const message = `Hello! I have a new enquiry:%0A%0A` +
+        `*Name:* ${name}%0A` +
+        `*Phone:* ${phone}%0A` +
+        `*Email:* ${email}%0A` +
+        `*Requirement:* ${query}`;
 
-    let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+      const whatsappNumber = '91XXXXXXXXXX'; // Replace with your number (country code + number, no + or spaces)
 
-    window.open(url, "_blank");
-});
-</script>
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    });
+  </script> -->
+
   <!-- FOOTER -->
   <div id="footer"></div>
 
